@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12 
+
+    working_directory: /go/src/github.com/ground-ctrl/testflight
+
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: | 
+              go fmt ./...
+              go vet ./...
+              go test ./...
